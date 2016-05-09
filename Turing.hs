@@ -44,8 +44,10 @@ eval (c:cs) (ls@(l:lt),x,rs@(r:rt)) =
     (y,L) -> eval cs (lt,l,y:rs)
     (y,R) -> eval cs (y:ls,r,rt)
 
+{-
 q0 star -> q0 star, R
 q0 box  -> qf hash, L
 q0 a    -> q1 a, R
 q0 b    -> q0' b, R  -- start state, non-empty word
-q0' 
+q0' ... 
+-}
