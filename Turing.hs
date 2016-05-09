@@ -28,7 +28,7 @@ apply (es,el,(s,m)) (as,al) =
     , ", but got " <> show al
     ]
   else
-    if es /= as
+    if es /= as -- XXX: don't error out, just move to the next 'Move'
     then error $ mconcat
       [ "expected symbol " <> show es
       " , but got " <> show as
@@ -43,3 +43,9 @@ eval (c:cs) (ls@(l:lt),x,rs@(r:rt)) =
     (y,S) -> eval cs (ls,y,rs)
     (y,L) -> eval cs (lt,l,y:rs)
     (y,R) -> eval cs (y:ls,r,rt)
+
+q0 star -> q0 star, R
+q0 box  -> qf hash, L
+q0 a    -> q1 a, R
+q0 b    -> q0' b, R  -- start state, non-empty word
+q0' 
